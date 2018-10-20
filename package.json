@@ -1,0 +1,22 @@
+{
+  "name": "fullcalender",
+  "version": "1.0.0",
+  "description": "calendar json",
+  "main": "jquery-3.3.1.min.js",
+  "scripts": {
+    "test": "yolo"
+  },
+  "repository": {
+    "type": "git",
+    "url": "checkstyle"
+  },
+  "keywords": [
+    "calendar"
+  ],
+  "author": "checkstyle",
+  "license": "ISC",
+  "dependencies": {
+    "fullcalendar": "^3.9.0"
+  },
+  "devDependencies": {}
+}
