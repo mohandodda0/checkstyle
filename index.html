@@ -7,35 +7,38 @@
     <script src='node_modules/moment/min/moment.min.js'></script>
     <script src='node_modules/fullcalendar/dist/fullcalendar.js'></script>
     <script>
-    	$(function() {
+    	 $(function() {
 
-		  // page is now ready, initialize the calendar...
+    $('#calendar').fullCalendar({
+      defaultView: 'month',
 
-		 $('#calendar').fullCalendar({
-			 events: function(start, end, timezone, callback) {
-    $.ajax({
-      url: 'myxmlfeed.php',
-      dataType: 'xml',
-      data: {
-        // our hypothetical feed requires UNIX timestamps
-        start: start.unix(),
-        end: end.unix()
+      header: {
+        center: 'addEventButton'
       },
-      success: function(doc) {
-        var events = [];
-        $(doc).find('event').each(function() {
-          events.push({
-            title: $(this).attr('title'),
-            start: $(this).attr('start') // will be parsed
-          });
-        });
-        callback(events);
+
+      customButtons: {
+        addEventButton: {
+          text: 'add event...',
+          click: function() {
+            var dateStr = prompt('Enter a date in YYYY-MM-DD format');
+            var date = moment(dateStr);
+
+            if (date.isValid()) {
+              $('#calendar').fullCalendar('renderEvent', {
+                title: 'dynamic event',
+                start: date,
+                allDay: true
+              });
+              alert('Great. Now, update your database...');
+            } else {
+              alert('Invalid date.');
+            }
+          }
+        }
       }
     });
-  }
-		
-		})
-	});
+
+  });
 
     </script>
 </head>
