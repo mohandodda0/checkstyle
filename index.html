@@ -6,50 +6,14 @@
     <script src='node_modules/jquery/dist/jquery.min.js'></script>
     <script src='node_modules/moment/min/moment.min.js'></script>
     <script src='node_modules/fullcalendar/dist/fullcalendar.js'></script>
-    <script>
-    	 $(function() {
-
-    $('#calendar').fullCalendar({
-      
- selectable: true,  
-      defaultView: 'month',
-
-      header: {
-	left: 'title',
-        right: 'addEventButton'
-      },
-
-      customButtons: {
-        addEventButton: {
-          text: 'add event...',
-          click: function() {
-            var dateStr = prompt('Enter a date in YYYY-MM-DD format');
-            var date = moment(dateStr);
-
-            if (date.isValid()) {
-              $('#calendar').fullCalendar('renderEvent', {
-                title: 'dynamic event',
-                start: date,
-                allDay: true
-              });
-              alert('Great. Now, update your database...');
-            } else {
-              alert('Invalid date.');
-            }
-          }
-        }
-      }
-    });
-
-  });
-
-    </script>
+    <script src='main.js'></script>
 </head>
 
 <body>
+    <div id="sidenav">
+        <h1>Hello</h1>
+    </div>
 	<div id='calendar'></div>
 </body>
 
 </html>
-
-
